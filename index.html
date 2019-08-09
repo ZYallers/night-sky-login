@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>好享瘦APP运营管理平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- CSS -->
+    <link rel='stylesheet' href='assets/css/fonts.css'>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/supersized.css">
+    <link rel="stylesheet" href="assets/css/stars.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="stars">
+    <div class="star pink"></div>
+    <div class="star white"></div>
+    <div class="star blue"></div>
+    <div class="star lianglv"></div>
+    <div class="star yellow"></div>
+</div>
+<div class="page-container">
+    <h1><img src="assets/img/login-logo.png" style="width: 32rem;"/></h1>
+    <form action="" method="post">
+        <input type="text" name="username" class="username" placeholder="用户名" autocomplete="off">
+        <input type="password" name="password" class="password" placeholder="密码" autocomplete="new-password">
+        <button type="submit">登 陆</button>
+        <div class="error"><span>+</span></div>
+    </form>
+</div>
+<div align="center">
+    ©2019 <a href="https://www.hxsapp.com/" target="_blank" title="HXSAPP" style="color: #fff;text-decoration: unset;">HXSAPP</a>
+    All rights reserved.
+</div>
+<!-- Javascript -->
+<script src="assets/js/jquery-2.2.4.min.js"></script>
+<script src="assets/js/supersized-3.2.7.min.js"></script>
+<script>
+    $(function(){
+        var slidesPath = 'assets/img/background/';
+        $.supersized({
+            // Functionality
+            slide_interval     : 5000, // Length between transitions
+            transition         : 1,    // 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+            transition_speed   : 10000, // Speed of transition
+            performance        : 1,    // 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
+
+            // Size & Position
+            min_width          : 0,    // Min width allowed (in pixels)
+            min_height         : 0,    // Min height allowed (in pixels)
+            vertical_center    : 1,    // Vertically center background
+            horizontal_center  : 1,    // Horizontally center background
+            fit_always         : 0,    // Image will never exceed browser width or height (Ignores min. dimensions)
+            fit_portrait       : 1,    // Portrait images will not exceed browser height
+            fit_landscape      : 0,    // Landscape images will not exceed browser width
+
+            // Components
+            slide_links        : 'blank',    // Individual links for each slide (Options: false, 'num', 'name', 'blank')
+            slides             : [    // Slideshow Images
+                {image : slidesPath + '1.jpeg'},
+                {image : slidesPath + '2.jpeg'},
+                {image : slidesPath + '3.jpeg'},
+                {image : slidesPath + '4.jpeg'},
+                {image : slidesPath + '5.jpeg'},
+                {image : slidesPath + '6.jpeg'},
+                {image : slidesPath + '7.jpeg'},
+                {image : slidesPath + '8.jpeg'},
+                {image : slidesPath + '9.jpeg'}
+            ]
+        });
+
+        $('.page-container form').submit(function(){
+            var username = $(this).find('.username').val();
+            var password = $(this).find('.password').val();
+            if(username == '') {
+                $(this).find('.error').fadeOut('fast', function(){
+                    $(this).css('top', '27px');
+                });
+                $(this).find('.error').fadeIn('fast', function(){
+                    $(this).parent().find('.username').focus();
+                });
+                return false;
+            }
+            if(password == '') {
+                $(this).find('.error').fadeOut('fast', function(){
+                    $(this).css('top', '96px');
+                });
+                $(this).find('.error').fadeIn('fast', function(){
+                    $(this).parent().find('.password').focus();
+                });
+                return false;
+            }
+        });
+        $('.page-container form .username, .page-container form .password').keyup(function(){
+            $(this).parent().find('.error').fadeOut('fast');
+        });
+    });
+</script>
+</body>
+</html>
